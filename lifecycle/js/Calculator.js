@@ -5,6 +5,7 @@ class Calculator extends React.Component {
       rubAmount: 0,
       rate: 57,
     };
+    this.loadActualRate();
   }
 
   calcUSDsum() {
@@ -48,11 +49,6 @@ class Calculator extends React.Component {
         <span>
           Сумма в долларах: {this.calcUSDsum()}
         </span>
-        <div>
-          <button onClick={this.loadActualRate.bind(this)}>
-            Загрузить курс валют
-          </button>
-        </div>
       </div>
     );
   }
