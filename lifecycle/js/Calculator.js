@@ -5,9 +5,12 @@ class Calculator extends React.Component {
       rubAmount: 0,
       rate: 57,
     };
-    this.loadActualRate();
   }
 
+  componentDidMount(){
+    this.loadActualRate();
+  }
+  
   calcUSDsum() {
     return (this.state.rubAmount / this.state.rate).toFixed(4);
   }
