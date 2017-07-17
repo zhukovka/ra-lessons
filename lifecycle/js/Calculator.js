@@ -1,6 +1,6 @@
 class Calculator extends React.Component {
-  constructor(...params) {
-    super(...params);
+  constructor(props) {
+    super(props);
     this.state = {
       rubAmount: 0,
       rate: 57,
