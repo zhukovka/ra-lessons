@@ -11,6 +11,11 @@ class CircleChart extends React.Component {
         'C#'
       ]
     };
+    this.state = {
+      jsRate: 40,
+      javaRate: 90,
+      sharpRate: 30
+    }
   }
   componentDidMount() {
     this.chart = new Chart("myChart", {
@@ -18,11 +23,32 @@ class CircleChart extends React.Component {
       data: this.data
     });
   }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
   render() {
     return (
       <div>
         <h2>Популярность языков программирования</h2>
-        <canvas id="myChart" width="100" height="100" />
-      </div> );
-    }
-  }
+        <div>
+          JavaScript:
+          <input type="text" name="jsRate" value={this.state.jsRate}
+            onChange={this.handleChange.bind(this)} />
+          </div> <div>
+            Java:
+            <input type="text" name="javaRate" value={this.state.javaRate}
+              onChange={this.handleChange.bind(this)} />
+            </div>
+            <div>
+              C#:
+              <input type="text" name="sharpRate" value={this.state.sharpRate}
+                onChange={this.handleChange.bind(this)} />
+              </div>
+              <canvas id="myChart" width="100" height="100" />
+            </div>
+          );
+        }
+      }
