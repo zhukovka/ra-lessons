@@ -28,7 +28,17 @@ class CircleChart extends React.Component {
       [event.target.name]: event.target.value
     });
   }
-
+  componentDidUpdate() {
+    this.updateChart();
+  }
+  updateChart() {
+    this.chart.data.datasets[0].data = [
+      this.state.jsRate,
+      this.state.javaRate,
+      this.state.sharpRate
+    ];
+    this.chart.update();
+  }
   render() {
     return (
       <div>
