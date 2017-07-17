@@ -1,5 +1,5 @@
 const App = () => (
   <div>
-    <Calculator />
+    <LifeComponent />
   </div>
 );
