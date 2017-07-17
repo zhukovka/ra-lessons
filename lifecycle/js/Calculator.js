@@ -17,6 +17,17 @@ class Calculator extends React.Component {
     });
   }
 
+  loadActualRate() {
+    fetch('https://neto-api.herokuapp.com/currency')
+    .then(response => response.json())
+    .then(rates => {
+      console.log(rates);
+      this.setState({
+        rate: rates.find(rate => rate.code === "USD").value
+      });
+    });
+  }
+
   render() {
     const { rubAmount, rate } = this.state;
     return (
@@ -37,6 +48,11 @@ class Calculator extends React.Component {
         <span>
           Сумма в долларах: {this.calcUSDsum()}
         </span>
+        <div>
+          <button onClick={this.loadActualRate.bind(this)}>
+            Загрузить курс валют
+          </button>
+        </div>
       </div>
     );
   }
