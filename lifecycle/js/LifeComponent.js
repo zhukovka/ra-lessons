@@ -5,12 +5,18 @@ class LifeComponent extends React.Component {
       stages:["Инициализация (constructor)"]
     }
   }
+
   componentWillMount(){
     this.setState({stages: [...this.state.stages, "Компонент будет монтирован (componentWillMount)"]});
   }
   componentDidMount(){
     this.setState({stages: [...this.state.stages, "Компонент был монтирован (componentDidMount)"]});
   }
+
+  componentWillReceiveProps(){
+    this.setState({stages: [...this.state.stages, "Компонент получит свойства (componentWillReceiveProps)"]});
+  }
+
   render() {
     return (
       <div>
@@ -20,6 +26,22 @@ class LifeComponent extends React.Component {
         <ol>
           {this.state.stages.map(stage=>(<li>{stage}</li>))}
         </ol>
+        <ul>
+          <li>
+            Будет ли компонент обновлен? (shouldComponentUpdate)
+          </li>
+          <li>
+            Компонент будет обновлен (componentWillUpdate)
+          </li>
+          <li>
+            Компонент был обновлен (componentDidUpdate)
+          </li>
+          <li>
+            Компонент будет извлечен (componentWillUnmount)
+          </li>
+
+
+        </ul>
       </div>)
   }
 }
