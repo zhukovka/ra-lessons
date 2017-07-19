@@ -6,33 +6,20 @@ function isNumber(value) {
   return typeof value === "number";
 }
 function mul(a, b) {
-  printToLog('умножение', a, b);
-  if (isNumber(a) && isNumber(b)) {
-    return a * b;
-  } else {
-    throw new Error("Оба значения должны быть числами.");
-  }
+  return a * b;
 }
 function add(a, b) {
-  printToLog('сложение', a, b);
-  if (isNumber(a) && isNumber(b)) {
-    return a + b;
-  } else {
-    throw new Error("Оба значения должны быть числами.");
-  }
+  return a + b;
 }
 function div(a, b) {
-  printToLog('деление', a, b);
-  if (isNumber(a) && isNumber(b)) {
-    return a / b;
-  } else {
-    throw new Error("Оба значения должны быть числами.");
-  }
+  return a / b;
 }
 function sub(a, b) {
-  printToLog('вычетание', a, b);
+  return a - b;
+}
+function operationExecutor(a, b, operation) {
   if (isNumber(a) && isNumber(b)) {
-    return a - b;
+    return operation(a, b);
   } else {
     throw new Error("Оба значения должны быть числами.");
   }
@@ -40,16 +27,16 @@ function sub(a, b) {
 describe('Pure functions', function() {
   describe('type checking', function() {
     it('should return 3', function() {
-      assert.equal(add(1, 2), 3);
+      assert.equal(operationExecutor(1, 2, add), 3);
     });
     it('should return 40', function() {
-      assert.equal(mul(10, 4), 40);
+      assert.equal(operationExecutor(10, 4, mul), 40);
     });
     it('should return 2', function() {
-      assert.equal(div(10, 5), 2);
+      assert.equal(operationExecutor(10, 5, div), 2);
     });
     it('should return 3', function() {
-      assert.equal(add("1", 2), 3);
+      assert.equal(operationExecutor("1", 2, add), 3);
     });
   });
 });
