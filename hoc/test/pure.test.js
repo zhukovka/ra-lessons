@@ -1,29 +1,47 @@
 var assert = require('assert');
+function isNumber(value) {
+  return typeof value === "number";
+}
 function mul(a, b) {
-  return a * b;
+  if (isNumber(a) && isNumber(b)) {
+    return a * b;
+  } else {
+    throw new Error("Оба значения должны быть числами.");
+  }
 }
 function add(a, b) {
-  return a + b;
-}
-function div(a, b) {
-  return a / b;
-}
-function sub(a, b) {
-  return a - b;
-}
-describe('Pure functions', function() {
-  describe('type checking', function() {
-    it('should return 3', function() {
-      assert.equal(add(1, 2), 3);
-    });
-    it('should return 40', function() {
-      assert.equal(mul(10, 4), 40);
-    });
-    it('should return 2', function() {
-      assert.equal(div(10, 5), 2);
-    });
-    it('should return 3', function() {
-      assert.equal(add("1", 2), 3);
+  if (isNumber(a) && isNumber(b)) {
+    return a + b;
+  } else {
+    throw new Error("Оба значения должны быть числами.");
+  } }
+  function div(a, b) {
+    if (isNumber(a) && isNumber(b)) {
+      return a / b;
+    } else {
+      throw new Error("Оба значения должны быть числами.");
+    }
+  }
+  function sub(a, b) {
+    if (isNumber(a) && isNumber(b)) {
+      return a - b;
+    } else {
+      throw new Error("Оба значения должны быть числами.");
+    }
+  }
+  describe('Pure functions', function() {
+    describe('type checking', function() {
+      it('should return 3', function() {
+        assert.equal(add(1, 2), 3);
+      });
+      it('should return 40', function() {
+        assert.equal(mul(10, 4), 40);
+      });
+      it('should return 2', function() {
+        assert.equal(div(10, 5), 2);
+      });
+      it('should return 3', function() {
+        assert.equal(add("1", 2), 3);
+      });
     });
   });
-});
