@@ -1,0 +1,23 @@
+{
+  "name": "ra-lessons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server --files '**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhukovka/ra-lessons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhukovka/ra-lessons/issues"
+  },
+  "homepage": "https://github.com/zhukovka/ra-lessons#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12"
+  }
+}

@@ -7,6 +7,10 @@ class Calculator extends React.Component {
     };
   }
 
+  componentDidMount(){
+    this.loadActualRate();
+  }
+  
   calcUSDsum() {
     return (this.state.rubAmount / this.state.rate).toFixed(4);
   }
@@ -14,6 +18,17 @@ class Calculator extends React.Component {
   handleAmountChange(event) {
     this.setState({
       rubAmount: event.target.value,
+    });
+  }
+
+  loadActualRate() {
+    fetch('https://neto-api.herokuapp.com/currency')
+    .then(response => response.json())
+    .then(rates => {
+      console.log(rates);
+      this.setState({
+        rate: rates.find(rate => rate.code === "USD").value
+      });
     });
   }
 
