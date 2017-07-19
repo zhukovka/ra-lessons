@@ -17,26 +17,32 @@ function div(a, b) {
 function sub(a, b) {
   return a - b;
 }
-function operationExecutor(a, b, operation) {
-  if (isNumber(a) && isNumber(b)) {
-    return operation(a, b);
-  } else {
-    throw new Error("Оба значения должны быть числами.");
+function addValidator(isValid, operation) {
+  return function (...args) {
+    if (args.every(isValid)) {
+      return operation.apply(this, args);
+    } else {
+      throw new Error("Передан некорректный параметр");
+    }
   }
 }
 describe('Pure functions', function() {
   describe('type checking', function() {
     it('should return 3', function() {
-      assert.equal(operationExecutor(1, 2, add), 3);
+      const numberAdd = addValidator(isNumber, add);
+      assert.equal(numberAdd(1, 2), 3);
     });
     it('should return 40', function() {
-      assert.equal(operationExecutor(10, 4, mul), 40);
+      const numberMul = addValidator(isNumber, mul);
+      assert.equal(numberMul(10, 4), 40);
     });
     it('should return 2', function() {
-      assert.equal(operationExecutor(10, 5, div), 2);
+      const numberDiv = addValidator(isNumber, div);
+      assert.equal(numberDiv(10, 5), 2);
     });
     it('should return 3', function() {
-      assert.equal(operationExecutor("1", 2, add), 3);
+      const numberAdd = addValidator(isNumber, add);
+      assert.equal(numberAdd("1", 2), 3);
     });
   });
 });
