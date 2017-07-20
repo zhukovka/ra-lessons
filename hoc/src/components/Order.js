@@ -3,7 +3,6 @@ import OrderView from './OrderView';
 import withData from './withData';
 
 const Order = withData(
-  OrderView,
   ({ match }) => {
     if(match && match.params.orderId){
       const id = match.params.orderId;
@@ -11,5 +10,5 @@ const Order = withData(
     }
   },
   'info'
-);
+)(OrderView);
 export default Order;

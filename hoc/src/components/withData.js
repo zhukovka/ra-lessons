@@ -1,6 +1,6 @@
 import React from 'react';
-function withData(Component, endpoint, propName) {
-  return class extends React.Component {
+function withData(endpoint, propName) {
+  return Component => class extends React.Component {
     constructor(props) {
       super(props);
       this.state = {};
