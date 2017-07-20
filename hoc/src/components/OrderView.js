@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 const OrderView = ({info})=>{
+  if(!info){
+    return (<div>Loading data...</div>)
+  }
   return (
     <div>
       <p>{info.from}</p>

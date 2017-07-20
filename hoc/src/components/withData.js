@@ -6,6 +6,9 @@ function withData(Component, endpoint, propName) {
       this.state = {};
     }
     componentDidMount() {
+      if (typeof endpoint === 'function') {
+        endpoint = endpoint(this.props);
+      }
       fetch(endpoint)
       .then(result => result.json())
       .then(data => this.setState({

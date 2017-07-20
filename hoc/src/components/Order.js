@@ -1,26 +1,15 @@
 import React from 'react';
 import OrderView from './OrderView';
+import withData from './withData';
 
-class Order extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      order: {}
-    };
-  }
-  componentDidMount() {
-    if(this.props.match && this.props.match.params.orderId){
-      const id = this.props.match.params.orderId;
-      fetch(`http://netology.getsandbox.com/api/orders/${id}`)
-      .then(result => {
-        return result.json();
-      })
-      .then(order => this.setState({ order }));
+const Order = withData(
+  OrderView,
+  ({ match }) => {
+    if(match && match.params.orderId){
+      const id = match.params.orderId;
+      return `http://netology.getsandbox.com/api/orders/${id}`
     }
-  }
-  render() {
-    return <OrderView info={this.state.order} />
-  }
-}
-
+  },
+  'info'
+);
 export default Order;
