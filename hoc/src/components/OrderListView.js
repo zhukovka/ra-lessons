@@ -21,7 +21,7 @@ const OrderListView = (props)=>{
       <table>
         {renderTH()}
         <tbody>
-          {props.orders.map((order)=>{
+          {props.orders && props.orders.map((order)=>{
             return (
               <tr key={order.id}>
                 <td><Link to={`/orders/${order.id}`}>{order.from}</Link></td>

@@ -1,6 +1,10 @@
+import React from 'react';
 function withData(Component, endpoint, propName) {
   return class extends React.Component {
-    // constructor без изменений
+    constructor(props) {
+      super(props);
+      this.state = {};
+    }
     componentDidMount() {
       fetch(endpoint)
       .then(result => result.json())
