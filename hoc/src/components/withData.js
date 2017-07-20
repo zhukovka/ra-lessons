@@ -3,16 +3,25 @@ function withData(endpoint, propName) {
   return Component => class extends React.Component {
     constructor(props) {
       super(props);
+      this.endpoint = endpoint;
+      this.propName = propName;
       this.state = {};
     }
     componentDidMount() {
+      this.fetchData(this.props);
+    }
+    componentWillReceiveProps(nextProps) {
+      this.fetchData(nextProps);
+    }
+    fetchData(props) {
+      let endpoint = this.endpoint;
       if (typeof endpoint === 'function') {
-        endpoint = endpoint(this.props);
+        endpoint = endpoint(props);
       }
       fetch(endpoint)
       .then(result => result.json())
       .then(data => this.setState({
-        [propName]: data
+        [this.propName]: data
       }));
     }
     render() {
