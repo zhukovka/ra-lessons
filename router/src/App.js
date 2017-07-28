@@ -11,7 +11,8 @@ class App extends Component {
     articles: [{
       id: "1",
       title: "Hello world",
-      content: "Hello react router!"
+      content: "Hello react router!",
+      author: "Kukuruku"
     }]
   };
   render() {
