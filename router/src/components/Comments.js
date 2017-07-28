@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withFetcher from './withFetcher';
-const Comments = ({comments, articleId})=> {
+const CommentsComponent = ({comments, articleId})=> {
   if(!comments) {
     return (
       <div>
@@ -19,9 +19,9 @@ const Comments = ({comments, articleId})=> {
   );
 }
 
-const CommentsComponent = withFetcher({
+const Comments = withFetcher({
   url: ({articleId}) => `/comments.json`,
   collName: 'comments'
-})(Comments);
+})(CommentsComponent);
 
-export default CommentsComponent;
+export default Comments;
