@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import Header from './components/Header.js';
 import Article from './components/Article.js';
 import ArticleGrid from './components/ArticleGrid.js';

@@ -1,46 +1,27 @@
 import React, { Component } from 'react';
-class Comments extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: undefined
-    };
-  }
-
-  componentWillMount() {
-    const { articleId } = this.props;
-    const url = `/comments.json`;
-    const params = {
-      method: 'GET',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    };
-    fetch(url, params)
-    .then(response => response.json())
-    .then(comments=>comments.filter(comment => comment.articleId == articleId))
-    .then(comments => this.setState({ comments }));
-  }
-
-  render(){
-    const { comments } = this.state;
-    if(!comments) {
-      return (
-        <div>
-          Loading comments...
-        </div>
-      );
-    }
+import withFetcher from './withFetcher';
+const Comments = ({comments, articleId})=> {
+  if(!comments) {
     return (
       <div>
-        {comments.map(comment => (
-          <div>
-            <div>{comment.author}</div>
-            <div>{comment.text}</div>
-          </div> ))}
-        </div>
-      );
-    }
+        Loading comments...
+      </div>
+    );
   }
+  return (
+    <div>
+      {comments.filter(comment => comment.articleId == articleId).map(comment => (
+        <div key={comment.id}>
+          <div>{comment.author}</div>
+          <div>{comment.text}</div>
+        </div> ))}
+      </div>
+  );
+}
 
-  export default Comments;
+const CommentsComponent = withFetcher({
+  url: ({articleId}) => `/comments.json`,
+  collName: 'comments'
+})(Comments);
+
+export default CommentsComponent;
