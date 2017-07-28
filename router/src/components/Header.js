@@ -5,10 +5,11 @@ function HeaderComponent({ location, data }) {
   const matches = location.pathname.match(/^\/article\/(\d+)\/?$/i);
   if(matches){
     const [, articleId] = matches;
-    if (articleId) {
-      const { author } = data.find(
-        ({id}) => id === articleId
-      );
+    const article = data.find(
+      ({id}) => id == articleId
+    );
+    if (article) {
+      const { author } = article;
       title = `Автор статьи: ${author}`
     }
   }
