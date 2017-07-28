@@ -9,7 +9,13 @@ const Article = ({match, articles}) => {
       </div>
     );
   }
-  const {title, author, text, id} = articles.find(({id}) => id == match.params.id);
+  let article;
+  if(match.params.id){
+    article = articles.find(({id}) => id == match.params.id);
+  } else if(articles.length) {
+    article = articles[0];
+  }
+  const {title, author, text, id} = article;
   return (
     <article>
       <Link to="/">Назад ко всем статьям</Link>

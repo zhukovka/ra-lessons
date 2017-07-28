@@ -12,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Header data={articles}/>
         <nav>
+          <Link to="/article">НОВОСТЬ ЧАСА!</Link>
           <Link to="/">Все</Link>
           <Link
             to={{ pathname: '/', search: '?theme=economy' }}>
@@ -26,7 +27,7 @@ class App extends Component {
           <Route exact path="/" render={(props) => (
             <ArticleGrid {...props} articles={articles} />
           )}/>
-          <Route path="/article/:id" render={(props) => (
+          <Route path="/article/:id?" render={(props) => (
             <Article {...props} articles={articles} />
           )}/>
         </Switch>
