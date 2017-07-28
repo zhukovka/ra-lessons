@@ -1,4 +1,5 @@
-function Header({match}) {
+import React, {Component} from 'react';
+function Header({match, data}) {
   let title = 'Добро пожаловать в Журнал «Мурзилка»';
   if (match.params.id) {
     const { author } = data.articles.find(

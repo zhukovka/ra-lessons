@@ -8,9 +8,6 @@ class ArticleGrid extends Component{
       content: "Hello react router!"
     }]
   };
-  componentDidMount(){
-
-  }
   render(){
     return (
       <ul>
