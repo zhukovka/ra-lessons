@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-function Header({match, data}) {
+import { withRouter } from 'react-router';
+function HeaderComponent({ match, data }) {
   let title = 'Добро пожаловать в Журнал «Мурзилка»';
   if (match.params.id) {
     const { author } = data.articles.find(
@@ -11,7 +12,7 @@ function Header({match, data}) {
     <div>
       <h2>{title}</h2>
     </div>
-  );
-}
+); };
+const Header = withRouter(HeaderComponent);
 
 export default Header;
