@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import DataFetcher from './DataFetcher';
 import registerServiceWorker from './registerServiceWorker';
 import { Router } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -14,5 +14,5 @@ const history = qhistory(
   stringify,
   parse
 );
-ReactDOM.render(<Router history={history}><App /></Router>, document.getElementById('root'));
+ReactDOM.render(<Router history={history}><DataFetcher /></Router>, document.getElementById('root'));
 registerServiceWorker();
